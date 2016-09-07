@@ -132,7 +132,7 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[18];
+            _typeNameTable = new string[20];
             _typeNameTable[0] = "MutiViewInRootPage.Controls.NavMenuListView";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.ListView";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.ItemsControl";
@@ -148,11 +148,13 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
             _typeNameTable[12] = "System.ValueType";
             _typeNameTable[13] = "System.Type";
             _typeNameTable[14] = "Windows.UI.Xaml.Controls.Frame";
-            _typeNameTable[15] = "MutiViewInRootPage.View.AddFeedView";
-            _typeNameTable[16] = "MutiViewInRootPage.View.EditFeedView";
-            _typeNameTable[17] = "MutiViewInRootPage.View.RootPages";
+            _typeNameTable[15] = "Windows.UI.Color";
+            _typeNameTable[16] = "Byte";
+            _typeNameTable[17] = "MutiViewInRootPage.View.AddFeedView";
+            _typeNameTable[18] = "MutiViewInRootPage.View.EditFeedView";
+            _typeNameTable[19] = "MutiViewInRootPage.View.RootPages";
 
-            _typeTable = new global::System.Type[18];
+            _typeTable = new global::System.Type[20];
             _typeTable[0] = typeof(global::MutiViewInRootPage.Controls.NavMenuListView);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.ListView);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.ItemsControl);
@@ -168,9 +170,11 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
             _typeTable[12] = typeof(global::System.ValueType);
             _typeTable[13] = typeof(global::System.Type);
             _typeTable[14] = typeof(global::Windows.UI.Xaml.Controls.Frame);
-            _typeTable[15] = typeof(global::MutiViewInRootPage.View.AddFeedView);
-            _typeTable[16] = typeof(global::MutiViewInRootPage.View.EditFeedView);
-            _typeTable[17] = typeof(global::MutiViewInRootPage.View.RootPages);
+            _typeTable[15] = typeof(global::Windows.UI.Color);
+            _typeTable[16] = typeof(global::System.Byte);
+            _typeTable[17] = typeof(global::MutiViewInRootPage.View.AddFeedView);
+            _typeTable[18] = typeof(global::MutiViewInRootPage.View.EditFeedView);
+            _typeTable[19] = typeof(global::MutiViewInRootPage.View.RootPages);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -209,9 +213,9 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
         private object Activate_3_AppShell() { return new global::MutiViewInRootPage.AppShell(); }
         private object Activate_6_List() { return new global::System.Collections.Generic.List<global::MutiViewInRootPage.NavMenuItem>(); }
         private object Activate_8_NavMenuItem() { return new global::MutiViewInRootPage.NavMenuItem(); }
-        private object Activate_15_AddFeedView() { return new global::MutiViewInRootPage.View.AddFeedView(); }
-        private object Activate_16_EditFeedView() { return new global::MutiViewInRootPage.View.EditFeedView(); }
-        private object Activate_17_RootPages() { return new global::MutiViewInRootPage.View.RootPages(); }
+        private object Activate_17_AddFeedView() { return new global::MutiViewInRootPage.View.AddFeedView(); }
+        private object Activate_18_EditFeedView() { return new global::MutiViewInRootPage.View.EditFeedView(); }
+        private object Activate_19_RootPages() { return new global::MutiViewInRootPage.View.RootPages(); }
         private void VectorAdd_6_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MutiViewInRootPage.NavMenuItem>)instance;
@@ -313,23 +317,38 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
                 xamlType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  MutiViewInRootPage.View.AddFeedView
+            case 15:   //  Windows.UI.Color
+                userType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.AddMemberName("A");
+                userType.AddMemberName("B");
+                userType.AddMemberName("G");
+                userType.AddMemberName("R");
+                xamlType = userType;
+                break;
+
+            case 16:   //  Byte
+                userType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 17:   //  MutiViewInRootPage.View.AddFeedView
                 userType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_15_AddFeedView;
+                userType.Activator = Activate_17_AddFeedView;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 16:   //  MutiViewInRootPage.View.EditFeedView
+            case 18:   //  MutiViewInRootPage.View.EditFeedView
                 userType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_EditFeedView;
+                userType.Activator = Activate_18_EditFeedView;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  MutiViewInRootPage.View.RootPages
+            case 19:   //  MutiViewInRootPage.View.RootPages
                 userType = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_17_RootPages;
+                userType.Activator = Activate_19_RootPages;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -393,6 +412,46 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
             var that = (global::MutiViewInRootPage.AppShell)instance;
             return that.AppFrame;
         }
+        private object get_7_Color_A(object instance)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            return that.A;
+        }
+        private void set_7_Color_A(object instance, object Value)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            that.A = (global::System.Byte)Value;
+        }
+        private object get_8_Color_B(object instance)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            return that.B;
+        }
+        private void set_8_Color_B(object instance, object Value)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            that.B = (global::System.Byte)Value;
+        }
+        private object get_9_Color_G(object instance)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            return that.G;
+        }
+        private void set_9_Color_G(object instance, object Value)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            that.G = (global::System.Byte)Value;
+        }
+        private object get_10_Color_R(object instance)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            return that.R;
+        }
+        private void set_10_Color_R(object instance, object Value)
+        {
+            var that = (global::Windows.UI.Color)instance;
+            that.R = (global::System.Byte)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -442,6 +501,30 @@ namespace MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo
                 xamlMember = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlMember(this, "AppFrame", "Windows.UI.Xaml.Controls.Frame");
                 xamlMember.Getter = get_6_AppShell_AppFrame;
                 xamlMember.SetIsReadOnly();
+                break;
+            case "Windows.UI.Color.A":
+                userType = (global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
+                xamlMember = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlMember(this, "A", "Byte");
+                xamlMember.Getter = get_7_Color_A;
+                xamlMember.Setter = set_7_Color_A;
+                break;
+            case "Windows.UI.Color.B":
+                userType = (global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
+                xamlMember = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlMember(this, "B", "Byte");
+                xamlMember.Getter = get_8_Color_B;
+                xamlMember.Setter = set_8_Color_B;
+                break;
+            case "Windows.UI.Color.G":
+                userType = (global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
+                xamlMember = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlMember(this, "G", "Byte");
+                xamlMember.Getter = get_9_Color_G;
+                xamlMember.Setter = set_9_Color_G;
+                break;
+            case "Windows.UI.Color.R":
+                userType = (global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
+                xamlMember = new global::MutiViewInRootPage.MutiViewInRootPage_XamlTypeInfo.XamlMember(this, "R", "Byte");
+                xamlMember.Getter = get_10_Color_R;
+                xamlMember.Setter = set_10_Color_R;
                 break;
             }
             return xamlMember;

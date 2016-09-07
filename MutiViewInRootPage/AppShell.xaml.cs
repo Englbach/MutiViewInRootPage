@@ -1,4 +1,5 @@
-﻿using MutiViewInRootPage.View;
+﻿using MutiViewInRootPage.Controls;
+using MutiViewInRootPage.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -73,6 +74,68 @@ namespace MutiViewInRootPage
 
         private void NavMenuItemContrinerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args) =>
             UpdateAutomationName<NavMenuItem>(args, ((NavMenuItem)args.Item).Label);
+
+        #region Navigation
+
+        private void NavMenuList_ItemInvoked(object sender, ListViewItem e)
+        {
+            //NavMenuList.SelectedIndex = -1;
+            var item = (NavMenuItem)((NavMenuListView)sender).ItemFromContainer(e);
+            if(item!=null)
+            {
+                AppFrame.Navigate(typeof(RootPages), item.Arguments);
+            }
+        }
+
+        public void OpenNavPanel()
+        {
+            TogglePanelButton.IsChecked = true;
+        }
+
         
+
+        private void OnNavigatedToPage(object sender, NavigationEventArgs e)
+        {
+            if(e.Content is Page && e.Content!=null)
+            {
+                var control = (Page)e.Content;
+                control.Loaded += Control_Loaded;
+            }
+        }
+
+        private void Control_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((Page)sender).Focus(FocusState.Programmatic);
+            ((Page)sender).Loaded -= Control_Loaded;
+        }
+
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
+        {
+
+        }
+        #endregion
+
+        /*
+        public Rect TooglePaneButtonRect { get; private set; }
+        ///<summary>
+        ///An event to notify listeners when the hambuger button may occlude other content in the app
+        /// the custom "PageHeader" user control is using this
+        /// </summary>
+
+        public event TypedEventHandler<AppShell, Rect> TogglePaneButtonRectChanged;
+
+        ///<summary>
+        /// Check for the conditions where the navigation pane does not occupy the space under the floating
+        /// Hamburger button and trigger the evetn
+        /// </summary>
+        /// 
+        private void CheckTogglePaneButtonSizeChanged()
+        {
+            TooglePaneButtonRect = RootSplitview.DisplayMode == SplitViewDisplayMode.Inline ||
+                RootSplitview.DisplayMode == SplitViewDisplayMode.Overlay ? TogglePanelButton.TransformToVisual(this).TransformBounds(new Rect(0, 0, TogglePanelButton.ActualWidth, TogglePanelButton.ActualHeight)) :
+                new Rect();
+            TogglePaneButtonRectChanged?.Invoke(this, this.TooglePaneButtonRect);
+        }
+        */
     }
 }

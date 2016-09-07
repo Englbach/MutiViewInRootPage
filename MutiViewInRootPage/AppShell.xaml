@@ -43,8 +43,8 @@
                         
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitview.DisplayMode" Value="CompactInline"></Setter>
-                        <Setter Target="RootSplitview.IsPaneOpen" Value="True"></Setter>
+                        <Setter Target="RootSplitview.DisplayMode" Value="Overlay"></Setter>
+                        <Setter Target="RootSplitview.IsPaneOpen" Value="False"></Setter>
                     </VisualState.Setters>
                     
                 </VisualState>
@@ -64,8 +64,8 @@
                         <AdaptiveTrigger MinWindowWidth="1024"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitview.DisplayMode" Value="Overlay"></Setter>
-                        <Setter Target="RootSplitview.IsPaneOpen" Value="False"></Setter>
+                        <Setter Target="RootSplitview.DisplayMode" Value="CompacInline"></Setter>
+                        <Setter Target="RootSplitview.IsPaneOpen" Value="true"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -99,7 +99,7 @@
             <SplitView.Content>
                 <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
                  OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
-                <Frame x:Name="AppShellFrame">
+                <Frame x:Name="AppShellFrame" Navigating="OnNavigatingToPage" Navigated="OnNavigatedToPage">
                     <Frame.ContentTransitions>
                         <TransitionCollection>
                             <NavigationThemeTransition>
@@ -113,5 +113,13 @@
             </SplitView.Content>
             
         </SplitView>
+
+        <ToggleButton x:Name="TogglePanelButton"
+                      Margin="0"
+                      TabIndex="1"
+                      AutomationProperties.Name="Menu"
+                      ToolTipService.ToolTip="Menu"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitview,Mode=TwoWay}"></ToggleButton>
     </Grid>
 </Page>
